@@ -114,13 +114,13 @@
 
   var map = L.map( 'map' ),
       legend = L.control( { position: 'bottomright' } ),
-      collectionId = "masked", // collection id
-      featureProperties = "Sauid,Et_PopNight_Ha", // limit properties to improve performance
+      collectionId = "ogr_gpkg_wales_stations", // collection id
+      featureProperties = "type,name", // limit properties to improve performance
       scenario_prop = "Et_PopNight_Ha", // property used for classification
-      base_url = "https://emotional.byteroad.net",
-      limit = 1000, // depending on the resource, this could impact performance significantly
-      featureLimit = 10000, // maximum number of features to bring to client
-      reqUrl = base_url + "/collections/" + collectionId + "/items?limit=" + limit,
+      base_url = "https://demo.pygeoapi.io/master",
+      limit = 100, // depending on the resource, this could impact performance significantly
+      featureLimit = 100, // maximum number of features to bring to client
+      reqUrl = base_url + "/collections/" + collectionId + "/items?limit=" + limit + "&f=json",
       xhr;
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -178,7 +178,8 @@
 
   }); 
 
-  map.setView( [49.2827, -123.1207], 12 );
+  map.setView( [51.76859042690837, -4.369226158570368], 10 );
+                    
 
   function loadData() {
 
@@ -192,7 +193,8 @@
     wfs3layer.clearLayers();
     
     // get the data from API
-    //addData( reqUrl + "&properties=" + featureProperties + "&bbox=" + map.getBounds().toBBoxString() );
+    addData( reqUrl + "&properties=" + featureProperties );
+    // addData( reqUrl + "&properties=" + featureProperties + "&bbox=" + map.getBounds().toBBoxString() );
   }
 
   function getColor(d) {
