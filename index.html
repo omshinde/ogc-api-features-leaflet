@@ -114,10 +114,10 @@
 
   var map = L.map( 'map' ),
       legend = L.control( { position: 'bottomright' } ),
-      collectionId = "opendrr_nhsl_physical_exposure_indicators_s", // collection id
+      collectionId = "masked", // collection id
       featureProperties = "Sauid,Et_PopNight_Ha", // limit properties to improve performance
       scenario_prop = "Et_PopNight_Ha", // property used for classification
-      base_url = "https://geo-api.stage.riskprofiler.ca",
+      base_url = "https://emotional.byteroad.net",
       limit = 1000, // depending on the resource, this could impact performance significantly
       featureLimit = 10000, // maximum number of features to bring to client
       reqUrl = base_url + "/collections/" + collectionId + "/items?limit=" + limit,
@@ -192,7 +192,7 @@
     wfs3layer.clearLayers();
     
     // get the data from API
-    addData( reqUrl + "&properties=" + featureProperties + "&bbox=" + map.getBounds().toBBoxString() );
+    //addData( reqUrl + "&properties=" + featureProperties + "&bbox=" + map.getBounds().toBBoxString() );
   }
 
   function getColor(d) {
